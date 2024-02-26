@@ -1,43 +1,22 @@
 <template>
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 sticky top-0 z-10">
         <br>
-        <div class="mx-auto bg-white rounded-lg max-w-7xl">
+        <div class="mx-auto bg-white rounded-lg max-w-7xl  top-0">
             <div>
                 <div class="flex flex-wrap">
                     <div class="w-full lg:w-1/2 h-screen overflow-y-auto pb-8">
                         <div class="px-12 ">
                             <updateLoadingBarVue />
                             <br>
-                            <div class="p-3">
+                            <div class="p-3 sticky top-0 z-10">
                                 <div class="pt-2 border-b  border-blue-50 pb-6">
                                     <div class="flex no-wrap">
                                         <div class="w-full lg:w-4/5">
-                                            <div class="text-xs">
-                                                <span class="isolate inline-flex rounded-md">
-                                                    <button type="button"
-                                                        class="relative inline-flex items-center gap-x-1.5   py-2">
-                                                        <svg fill="none" width="20" viewBox="0 0 32 32"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" id="fi_6142849">
-                                                            <linearGradient id="paint0_linear_364_995"
-                                                                gradientUnits="userSpaceOnUse" x1="27.097" x2="1.308"
-                                                                y1="29.141" y2="9.187">
-                                                                <stop offset="0" stop-color="#3B82F6"></stop>
-                                                                <stop offset="1" stop-color="#6DA2F8"></stop>
-                                                            </linearGradient>
-                                                            <path clip-rule="evenodd"
-                                                                d="m17.5943 4.87146c-.0725-.71631-1.1162-.71631-1.1887 0-.0286.28234-.2519.50561-.5342.5342-.7163.07251-.7163 1.11621 0 1.18872.2823.02858.5056.25185.5342.53419.0725.71631 1.1162.71631 1.1887 0 .0286-.28234.2519-.50561.5342-.53419.7163-.07251.7163-1.11621 0-1.18872-.2823-.02859-.5056-.25186-.5342-.5342zm4.9429 2.55795c.2731-.97294 1.6524-.97294 1.9255 0l.7487 2.66669c.0942.3358.3567.5982.6925.6925l2.6666.7486c.973.2732.973 1.6524 0 1.9256l-2.6666.7486c-.3358.0943-.5983.3567-.6925.6925l-.7487 2.6667c-.2731.973-1.6524.973-1.9255 0l-.7487-2.6667c-.0943-.3358-.3567-.5982-.6925-.6925l-2.6667-.7486c-.9729-.2732-.9729-1.6524 0-1.9256l2.6667-.7486c.3358-.0943.5982-.3567.6925-.6925zm-12.36 4.60629c.7087-1.569 2.9368-1.569 3.6455 0l1.5998 3.5423c.2004.4437.5558.7991.9995.9995l3.5422 1.5998c1.5691.7086 1.5691 2.9368 0 3.6454l-3.5422 1.5999c-.4437.2004-.7991.5558-.9995.9995l-1.5998 3.5422c-.7087 1.569-2.9368 1.569-3.6455 0l-1.59981-3.5422c-.2004-.4437-.55578-.7991-.99949-.9995l-3.54224-1.5999c-1.56903-.7086-1.56903-2.9368 0-3.6454l3.54224-1.5998c.44371-.2004.79909-.5558.99949-.9995z"
-                                                                fill="url(#paint0_linear_364_995)" fill-rule="evenodd">
-                                                            </path>
-                                                        </svg>
-                                                        <span class="uppercase tracking-widest font-bold"
-                                                            style="color: #3B82F6;">
-                                                            Generate
-                                                            With AI</span>
-                                                    </button>
+                                            <!-- Generate with AI-->
+                                            <GenerateWithAI />
 
-                                                </span>
-                                            </div>
+                                            <!-- Generate with AI-->
+
                                             <span class="text-md font-semibold text-customBlue"
                                                 style="font-size: 24px;">Cover Letter Builder
                                                 <span class="text-blue-500">.</span></span>
@@ -57,62 +36,12 @@
                                     </div>
                                 </div>
                                 <div class="max-w-4xl mx-auto">
-                                    <div class="rounded-lg p-0">
-                                        <br>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                            <div>
-                                                <label class="block text-gray-800 text-xs  mb-2" for="wanted-job-title">
-                                                    Wanted Job Title
-                                                </label>
-                                                <LsjobInput />
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-800 text-xs  mb-2" for="last-name">
-                                                    Full Name
-                                                </label>
-                                                <input
-                                                    class="appearance-none p-3 bg-gray-100  w-full rounded-lg text-gray-700 focus:outline-none"
-                                                    id="last-name" type="text">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-800 text-xs   mb-2" for="email">
-                                                    Email
-                                                </label>
-                                                <input
-                                                    class="appearance-none p-3 bg-gray-100  w-full rounded-lg text-gray-700 focus:outline-none"
-                                                    id="email" type="email">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-800 text-xs   mb-2" for="phone">
-                                                    Phone
-                                                </label>
-                                                <input
-                                                    class="appearance-none p-3 bg-gray-100  w-full rounded-lg text-gray-700 focus:outline-none"
-                                                    id="phone" type="tel">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-800 text-xs   mb-2" for="country">
-                                                    Country
-                                                </label>
-                                                <input
-                                                    class="appearance-none p-3 bg-gray-100  w-full rounded text-gray-700 focus:outline-none"
-                                                    id="country" type="text">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-800 text-xs   mb-2" for="city">
-                                                    City
-                                                </label>
-                                                <input
-                                                    class="appearance-none p-3 bg-gray-100  w-full rounded text-gray-700 focus:outline-none"
-                                                    id="city" type="text">
-                                            </div>
+                                    <!-- FormCoverLetter.vue-->
+                                    <!-- FormCoverLetter.vue-->
+                                    <formCoverLetterVue />
+                                    <!-- FormCoverLetter.vue-->
+                                    <!-- FormCoverLetter.vue-->
 
-
-                                        </div>
-                                        <div>
-                                            <QuillEditor theme="snow" />
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -253,11 +182,17 @@
                                                                             </div>
                                                                         </div>
                                                                         <div
-                                                                            class="w-full lg:w-2/3 border-l overflow-auto h-screen p-6">
+                                                                            class="w-full lg:w-2/3 border-l bg-pattern-light bg-gray-100 overflow-auto h-screen p-6">
 
                                                                             <div
-                                                                                class="a4 pt-8 pr-4 pl-4 rounded-lg text-gray-900 bg-gray-100">
-                                                                                <b>Ada Sheik</b>
+                                                                                class="a4 pt-8 pr-4 bg-white  pl-4 rounded-lg text-gray-900 ">
+                                                                                <!--Cover Letter-->
+                                                                                <!--Cover Letter-->
+
+                                                                                <CoverLetter />
+
+                                                                                <!--Cover Letter-->
+                                                                                <!--Cover Letter-->
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -273,72 +208,13 @@
                                 </div>
                                 <div class="bg-white a4 p-10 text-gray-900 rounded-lg w-full h-svh h-fit" style="zoom: 61%;"
                                     id="resumePreview">
-                                    <b class="text-blue-600 text-2xl">Ada Sheik</b>
-                                    <div class="text">
-                                        <p class=" pt-2">
-                                            Dear Google,
-                                        </p>
-                                        <br>
-                                        <p>
-                                            I am writing to express my interest in the Front End Developer position with a
-                                            focus
-                                            on Vue.js at [Company Name], as advertised on [where you found the job posting].
-                                            With a solid foundation in front-end technologies and a passion for building
-                                            intuitive and scalable web applications, I am excited about the opportunity to
-                                            contribute to your team.
-                                        </p>
+                                    <!--Cover Letter-->
+                                    <!--Cover Letter-->
 
-                                        <p>
-                                            In my current role at [Current Employer/Project], I have successfully developed
-                                            and
-                                            maintained high-quality, responsive web applications using Vue.js, HTML, CSS,
-                                            and
-                                            JavaScript, which have significantly improved user experience and business
-                                            outcomes.
-                                            My proficiency in Vue.js, combined with a keen eye for design and detail, has
-                                            enabled me to create seamless and dynamic user interfaces that align with
-                                            business
-                                            requirements and user needs.
-                                        </p>
+                                    <CoverLetter />
 
-                                        <p>
-                                            One of my notable projects involved redesigning a complex web application, where
-                                            I
-                                            leveraged Vue.js to optimize its performance and usability. This project not
-                                            only
-                                            resulted in a 40% improvement in load times but also enhanced the overall user
-                                            engagement by 30%. My ability to work collaboratively with cross-functional
-                                            teams
-                                            ensured the project's success, aligning technical solutions with design and user
-                                            experience goals.
-                                        </p>
-
-                                        <p>
-                                            I am particularly drawn to the opportunity at [Company Name] because of your
-                                            commitment to innovation and excellence in web development. I am eager to bring
-                                            my
-                                            expertise in Vue.js and front-end development to your team, contributing to
-                                            projects
-                                            that drive business growth and enhance user satisfaction.
-
-                                        </p>
-                                        <p>
-
-                                            I look forward to the opportunity to discuss how my background, skills, and
-                                            enthusiasms align with the needs of your team. I am available at your
-                                            convenience
-                                            for an interview and can be reached at [Your Phone Number] or [Your Email].
-                                            Thank
-                                            you for considering my application. I am excited about the possibility of
-                                            contributing to the success of [Company Name] and look forward to the
-                                            opportunity to
-                                            discuss my application in further detail.
-                                        </p>
-                                        <br>
-                                        <p>
-                                            Sincere
-                                        </p>
-                                    </div>
+                                    <!--Cover Letter-->
+                                    <!--Cover Letter-->
 
                                 </div>
                             </div>
@@ -352,12 +228,8 @@
 </template>
 
 <script>
-import {
-    QuillEditor
-} from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
-import LsjobInput from "../../components/forms/res/form/LsJobInput.vue"
+
 import HardSkillCardVue from '../../components/forms/res/HardSkillCard.vue';
 
 import {
@@ -379,11 +251,12 @@ import SemiCircleProgressBar from "@/components/forms/res/SemiCircleProgressBar.
 import LsColorPallete from "@/components/forms/res/form/LsColorPallete.vue";
 import LsFontsizeVue from '../../components/forms/res/form/LsFontsize.vue';
 import ResumePreviewDisplayerVue from '../../components/templates/ResumePreviewDisplayer.vue';
-
+import CoverLetter from '@/components/templates/CoverLetter.vue';
+import formCoverLetterVue from '../../components/forms/coverLetter/formCoverLetter.vue';
+import GenerateWithAI from '@/components/forms/coverLetter/generateWithAI.vue';
 export default {
     data() {
         return {
-            job: "Software Entwickler",
             isOpen: false,
             score: 85,
             items: [{
@@ -399,19 +272,7 @@ export default {
                 href: '#'
             },
             ],
-            hardSkills: [{
-                name: "Ms office",
-                level: 2
-            },
-            {
-                name: "Python",
-                level: 4
-            },
-            {
-                name: "Sql",
-                level: 3
-            }
-            ]
+
         }
     },
     components: {
@@ -427,12 +288,13 @@ export default {
         MenuItem,
         MenuItems,
         ChevronDownIcon,
-        LsjobInput,
         SemiCircleProgressBar,
         LsColorPallete,
         LsFontsizeVue,
-        QuillEditor,
-        ResumePreviewDisplayerVue
+        ResumePreviewDisplayerVue,
+        CoverLetter,
+        formCoverLetterVue,
+        GenerateWithAI
 
     },
     methods: {
