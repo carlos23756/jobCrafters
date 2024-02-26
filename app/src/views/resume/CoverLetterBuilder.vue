@@ -24,15 +24,7 @@
                                                 Create a professional Resume choose The good options. <br>
                                             </div>
                                         </div>
-                                        <div class="w-full  p-1 text lg:w-1/5" style="line-height: 4px;">
-                                            <div class="pt-1 text-center ">
-                                                <span class="text-xs text-customBlue font-bold uppercase">ATS
-                                                    Score</span>
-                                                <br>
-                                                <SemiCircleProgressBar :progress="score" />
-
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="max-w-4xl mx-auto">

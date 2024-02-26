@@ -19,14 +19,14 @@
                             id=" FullName" type="text" v-model="fullName">
                     </div>
                     <div>
-                        <label class="block text-gray-800 text-xs   mb-2" for="email">
+                        <label class="block text-gray-800 text-xs " for="email">
                             Email
                         </label>
                         <input class="appearance-none p-3 bg-gray-100  w-full rounded-lg  focus:outline-none" id="email"
                             type="email" v-model="email">
                     </div>
                     <div>
-                        <label class="block text-gray-800 text-xs   mb-2" for="phone">
+                        <label class="block text-gray-800 text-xs " for="phone">
                             Phone
                         </label>
                         <input class="appearance-none p-3 bg-gray-100  w-full rounded-lg  focus:outline-none" id="phone"
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div>
-                <div class="text-xl text-gray-800 font-semibold pt-1 pb-1">Employer Details</div>
+                <div class="text-xl text-gray-800 font-semibold pt-1 pb-4">Employer Details</div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-800 text-xs   mb-2" for="CompanyName">
@@ -61,8 +61,9 @@
                     </div>
                 </div>
             </div>
+            
             <div>
-                <div class="pb-4">
+                <div class="pb-8">
                     <div class="text-xl text-gray-800 font-semibold">Letter Details</div>
                     <span class="text-xs text-gray-500">3–4 paragraphs explaining why you're the perfect candidate for a
                         specific job</span>

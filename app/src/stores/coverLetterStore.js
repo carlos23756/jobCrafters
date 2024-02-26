@@ -5,7 +5,7 @@ export const useCoverLetterStore = defineStore('coverLetter', {
         formData: {
             Fullname: 'Ada sheik',
             position: 'software Develloper',
-            companyName: 'Google Gmbh',
+            companyName: 'JobCrafters Gmbh',
             hiringManagerName: 'Marc carlos',
             adress: 'Mainkofen ,deggendorf',
             email: 'adasheik01@gmail.com',

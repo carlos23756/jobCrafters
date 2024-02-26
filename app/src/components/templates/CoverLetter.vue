@@ -11,6 +11,9 @@
                 <p class="text-gray-500">{{ coverLetterStore.formData.position }}</p>
             </div>
             <div>
+                <h2 class="text-blue-500 capitalize font-semibold  text-2xl">
+                    To
+                </h2>
                 <span class="text-gray-500">{{ coverLetterStore.formData.companyName }}</span> <br>
                 <span class="text-gray-500">{{ coverLetterStore.formData.hiringManagerName }}</span> <br>
 

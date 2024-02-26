@@ -40,7 +40,7 @@
                                 class="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
 
                                 <div class="mt-2 mb-6">
-                                    <div class="flex flex-wrap">
+                                    <div class="flex flex-wrap" v-if="getLinkOrDescription == false">
                                         <div class="w-1/2">
                                             <div class="p-4">
                                             </div>
@@ -83,7 +83,7 @@
                                                         </label>
                                                         <input
                                                             class="appearance-none p-3 border border-gray-700 text-sm w-full rounded-lg  focus:outline-none"
-                                                            id="jobLink" type="text">
+                                                            id="jobLink" type="text" v-model="jobLink" spellcheck="false">
                                                     </div>
                                                     <div class="relative">
                                                         <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -97,7 +97,7 @@
                                                     <div>
                                                         <div class="pt-2">
                                                             <label for="comment" class="block text-gray-900 text-xs">
-                                                                Job Description</label>
+                                                                Job Description (Recomanded)</label>
                                                             <div class="mt-2">
                                                                 <textarea rows="4" name="comment" id="comment"
                                                                     class="block w-full rounded-md  py-1.5 text-gray-900 focus:border-gray-700 focus:border border-gray-700  placeholder:text-gray-400 border sm:text-sm sm:leading-6" />
@@ -105,13 +105,34 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="mt-4">  
+                                                <div class="mt-4">
                                                     <button type="button"
                                                         class="inline-flex float-right w-full justify-center rounded-md goldGradient  text-amber-900 p-5 text-sm font-bold  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                                        @click="closeModal">
+                                                        @click="getLinkValidate" style="font-size: 15px;">
                                                         Generate With AI
                                                     </button>
                                                 </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="p-8" v-if="getLinkOrDescription == true">
+                                            <span class="isolate inline-flex rounded-md" @click="goBack">
+                                                <button type="button"
+                                                    class="relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-700 hover:bg-gray-50 focus:z-10">
+                                                    <span class="sr-only">Previous</span>
+                                                    <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
+                                                </button>
+                                                <button type="button"
+                                                    class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-700 hover:bg-gray-50 focus:z-10">
+                                                Go Back
+                                                </button>
+                                            </span>
+                                            <div class="pt-2 pb-2 text-2xl font-bold">Webscrapping</div>
+                                            <div v-if="!loading" class="text-sm text-gray-500"> {{ pageContent }}</div>
+                                            <div v-else>
+                                                <SpinnerVue />
                                             </div>
                                         </div>
                                     </div>
@@ -127,8 +148,7 @@
     </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script >
 import {
     TransitionRoot,
     TransitionChild,
@@ -136,21 +156,61 @@ import {
     DialogPanel,
     DialogTitle,
 } from '@headlessui/vue'
+import { ChevronLeftIcon } from '@heroicons/vue/20/solid'
+import axios from 'axios';
+import SpinnerVue from '../../ui/Spinner.vue';
 
-const isOpen = ref(false)
+export default {
+    data() {
+        return {
+            url: '',
+            jobLink: '',
+            pageContent: '',
+            isOpen: false,
+            loading: false,
+            getLinkOrDescription: false
 
-function closeModal() {
-    isOpen.value = false
+        };
+    },
+    components: {
+        TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogTitle,
+        SpinnerVue,ChevronLeftIcon
+
+    },
+    methods: {
+        async fetchPageContent() {
+            try {
+                const response = await axios.get(`http://localhost:3000/scrape?url=${this.jobLink}`);
+                this.pageContent = response.data.text;
+                this.loading = false
+            } catch (error) {
+                console.error("Erreur lors de la récupération du contenu de la page.");
+            }
+        },
+        closeModal() {
+            this.isOpen = false
+        },
+        openModal() {
+            this.isOpen = true
+        },
+        getLinkValidate() {
+            this.getLinkOrDescription = true
+            this.fetchPageContent(),
+            this.loading = true
+        },
+        goBack(){
+            this.getLinkOrDescription = false
+
+        }
+    }
 }
-function openModal() {
-    isOpen.value = true
-}
+
 </script>
 
 <style>
 .goldGradient {
     background: rgba(255, 184, 0, 1);
 
-    background: linear-gradient(180deg, rgba(255, 242, 159, 1) 0%, rgba(255, 184, 0, 1) 100%);
+    background: linear-gradient(-55deg, rgba(255, 242, 159, 1) 0%, rgba(255, 184, 0, 1) 100%);
 }
 </style>
