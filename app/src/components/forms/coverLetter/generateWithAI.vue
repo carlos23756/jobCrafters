@@ -132,6 +132,7 @@
                                             <div class="pt-2 pb-2 text-2xl font-bold">Webscrapping</div>
                                             <div v-if="!loading" class="text-sm text-gray-500"> {{ pageContent }}</div>
                                             <div v-else>
+                                               <div class="text-gray-500 capitalize"> scrape information from the website</div> <br>
                                                 <SpinnerVue />
                                             </div>
                                         </div>
