@@ -30,8 +30,6 @@
                             <ChevronUpIcon v-else class="h-4 w-4 text-customBlue" aria-hidden="true" />
                         </span>
                     </DisclosureButton>
-
-
                 </dt>
                 <DisclosurePanel as="dd" class="rounded-b-lg pr-1" style="background:#f9f9f9">
                     <div class="max-w-4xl  mx-auto">

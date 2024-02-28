@@ -1,18 +1,40 @@
 <template>
   <div>
     <div class="pt-8">
-      <h2 class="text-2xl text-gray-900 font-bold">Dashboard <span class="text-blue-400">.</span> </h2>
-      <p class="text-sm text-gray-600 pt-2">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea voluptates optio aspernatur accusantium, soluta
-        ratione ut repudiandae id cum itaque maxime.
-      </p>
+      <div class="w-4/6">
+        <h2 class="text-2xl text-gray-900 font-bold">Dashboard <span class="text-blue-400">.</span> </h2>
+        <p class="text-sm text-gray-500 pt-2">
+          Create your first Application with a the link or the job description and generate 
+        your Resume and Motivation letter with AI , you can also . jump in a job interview simulation and solve coding Task
+        </p>
+      </div>
+      <br>
+      <div>
+        <div class="text-center border bg-white p-8 rounded-lg w-1/3">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            aria-hidden="true">
+            <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          </svg>
+          <h3 class="mt-2 text-sm font-semibold text-gray-900">No Application</h3>
+          <p class="mt-1 text-sm text-gray-500">Get started by creating a new project.</p>
+          <div class="mt-6">
+            <button type="button"
+              class="inline-flex items-center rounded-md bg-blue-500 px-4 py-3 text-sm font-semibold text-white shadow-sm  focus-visible:outline  ">
+              <PlusIcon class="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
+              New Application
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { PlusIcon } from '@heroicons/vue/20/solid'
 export default {
-
+  components: { PlusIcon }
 }
 </script>
 

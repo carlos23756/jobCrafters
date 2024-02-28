@@ -42,6 +42,7 @@ import InterviewSimulation from '@/views/interview/InterviewSimulation.vue';
 import PricingVue from '@/views/Pricing.vue';
 import BlogVue from '@/views/blog/index.vue';
 import faqVue from '@/views/FAQ.vue';
+import Resume from "@/views/dashboard/Resume.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -77,7 +78,12 @@ const router = createRouter({
       path: '/profile', name: 'Profile', component: Profile,
       meta: { layout: DashboardLayout },
     },
-    { path: '/settings', name: 'Settings', component: Settings },
+    {
+      path: '/resumes', name: 'resumes', component: Resume,
+      meta: { layout: DashboardLayout },
+    },
+    { path: '/settings', name: 'Settings', component: Settings ,
+    meta: { layout: DashboardLayout },},
     {
       path: '/resume-builder', name: 'ResumeBuilder', component: ResumeBuilder,
       meta: { layout: Blank }
