@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lg:px-8">
     <div class="pt-8">
       <div class="w-4/6">
         <h2 class="text-2xl text-gray-900 font-bold">Dashboard <span class="text-blue-400">.</span> </h2>

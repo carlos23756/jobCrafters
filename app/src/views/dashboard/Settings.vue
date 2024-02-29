@@ -1,45 +1,15 @@
 <template>
     <div>
-
         <div>
         <!-- Content area -->
             <div class="">
                 <div class="lg:px-8">
                     <div class="mx-auto flex flex-col lg:max-w-4xl">
-                        <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white">
-                            <button type="button"
-                                class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 lg:hidden"
-                                @click="sidebarOpen = true">
-                                <span class="sr-only">Open sidebar</span>
-                                <Bars3BottomLeftIcon class="h-6 w-6" aria-hidden="true" />
-                            </button>
-                            <div class="flex flex-1 justify-between px-4 lg:px-0">
-                                <div class="flex flex-1">
-                                    <form class="flex w-full lg:ml-0" action="#" method="GET">
-                                        <label for="mobile-search-field" class="sr-only">Search</label>
-                                        <label for="desktop-search-field" class="sr-only">Search</label>
-                                        <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-                                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
-                                                <MagnifyingGlassIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-                                            </div>
-                                            <input name="mobile-search-field" id="mobile-search-field"
-                                                class="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 focus:border-transparent focus:outline-none focus:ring-0 focus:placeholder:text-gray-400 sm:hidden"
-                                                placeholder="Search" type="search" />
-                                            <input name="desktop-search-field" id="desktop-search-field"
-                                                class="hidden h-full w-full border-transparent py-2 pl-8 pr-3 text-sm text-gray-900 focus:border-transparent focus:outline-none focus:ring-0 focus:placeholder:text-gray-400 sm:block"
-                                                placeholder="Search jobs, applicants, and more" type="search" />
-                                        </div>
-                                    </form>
-                                </div>
-                                
-                            </div>
-                        </div>
-
                         <main class="flex-1">
                             <div class="relative mx-auto max-w-4xl">
                                 <div class="pb-16 pt-10">
                                     <div class="px-4 sm:px-6 lg:px-0">
-                                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Settings</h1>
+                                        <h1 class="text-2xl font-bold tracking-tight text-gray-900">Settings</h1>
                                     </div>
                                     <div class="px-4 sm:px-6 lg:px-0">
                                         <div class="py-6">
