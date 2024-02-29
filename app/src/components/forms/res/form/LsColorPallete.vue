@@ -1,49 +1,57 @@
 <template>
     <div>
         <div>
-            <RadioGroup v-model="selectedColor" class="mt-2">
+            <RadioGroup class="mt-2">
                 <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
                 <span class="flex items-center space-x-2">
-                    <RadioGroupOption as="template" v-for="(color,id) in colors" :key="id" :value="color"
-                        v-slot="{ active, checked }">
-                        <div
-                            :class="[color.selectedColor, active && checked ? 'ring ring-offse' : '', !active && checked ? 'ring-1' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
-                            <RadioGroupLabel as="span" class="sr-only">{{ color.name }}</RadioGroupLabel>
-                            <span aria-hidden="true"
-                                :class="[color.bgColor, 'h-7 w-7 rounded-full']" />
+                    <div v-for="(color, index) in colors" :key="index">
+                        <div class="cursor-pointer"
+                            :class="[index === selectedColor ? 'ring ring-offset-2 rounded-full' : '', index === selectedColor ? color.ringColor : '']">
+                            <div aria-hidden="true" :class="[color.bgColor, 'h-8 w-8 rounded-full']"
+                                @click="updateSelectedColor(index)">
+                                <div v-if="index === selectedColor ">
+                                    <svg viewBox="0 -65 512 512" width="12" fill="#fff" class="mx-auto" style="padding-top: 10px;"
+                                        xmlns="http://www.w3.org/2000/svg" id="fi_1633830">
+                                        <path
+                                            d="m444.175781 0-260.871093 242.011719-110.324219-117.734375-72.980469 68.386718 178.234375 190.207032 333.765625-309.351563zm0 0">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                    </RadioGroupOption>
+                    </div>
                 </span>
             </RadioGroup>
         </div>
     </div>
 </template>
-
+  
 <script>
-import {
-    RadioGroup,
-    RadioGroupLabel,
-    RadioGroupOption,
-} from '@headlessui/vue'
+import { computed } from 'vue';
+import { useCoverLetterStore } from '@/stores/coverLetterStore';
+import { RadioGroup, RadioGroupLabel } from '@headlessui/vue';
+
 export default {
-    data() {
-        return {
-            colors: [
-                { name: 'Washed Black', bgColor: 'bg-red-500', selectedColor: 'ring-red-500' },
-                { name: 'Washed Black', bgColor: 'bg-orange-500', selectedColor: 'ring-orange-500' },
-                { name: 'Washed Black', bgColor: 'bg-amber-500', selectedColor: 'ring-amber-500' },
-                { name: 'Washed Black', bgColor: 'bg-green-500', selectedColor: 'ring-green-500' },
-                { name: 'Washed Black', bgColor: 'bg-blue-500', selectedColor: 'ring-blue-500' },
+    components: { RadioGroup, RadioGroupLabel },
+    setup() {
+        const store = useCoverLetterStore();
 
+        // Using a computed property to automatically update when store's state changes
+        const selectedColor = computed(() => store.colorId);
+        const colors = computed(() => store.colors);
 
-
-            ],
-            selectedColor:0,
-            
+        function updateSelectedColor(colorId) {
+            store.setColor(colorId);
         }
-    },
-    components: { RadioGroup, RadioGroupLabel, RadioGroupOption }
-}
-</script>
 
-<style></style>
+        return {
+            selectedColor,
+            colors,
+            updateSelectedColor,
+        };
+    },
+};
+</script>
+  
+<style scoped></style>
+  

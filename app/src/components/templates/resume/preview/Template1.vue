@@ -4,10 +4,11 @@
             <span class="text-sm font-semibold text-gray-700">{{ templateName }}</span>
 
         </div>
-        <div  :class="{'border-blue-500': selected}" class="border border-gray-200 hover:border-blue-500 cursor-pointer border-2 rounded-lg w-fit rounded"
-            style="height: 295px;"  @click="selection">
+        <div  :class="{'border-blue-500': selected}" class="border w-full border-gray-200 hover:border-blue-500 cursor-pointer border-2 rounded-lg w-fit rounded"
+            style="height: 295px;" @click="selection">
             <div class="p-0">
-                <img src="./assets/Template1.png" class="rounded-lg" alt="">
+                <div style="height: 275px;">
+                </div>
                 <div class="flex bg-gray-100 relative h-10 rounded-b-lg" style="top: -23px;" >
                     <div class="w-5/6 pt-2">
                         <span 

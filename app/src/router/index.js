@@ -22,8 +22,8 @@ import SignUp from '@/views/auth/SignUp.vue';
 import Dashboard from '@/views/dashboard/Dashboard.vue';
 
 // Profile
-import Profile from '@/views/profile/Profile.vue';
-import Settings from '@/views/profile/Settings.vue';
+import Profile from '@/views/dashboard/Profile.vue';
+import Settings from '@/views/dashboard/Settings.vue';
 
 // Resume
 import ResumeBuilder from '@/views/resume/ResumeBuilder.vue';

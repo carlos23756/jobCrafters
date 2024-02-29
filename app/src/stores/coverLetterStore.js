@@ -21,21 +21,39 @@ export const useCoverLetterStore = defineStore('coverLetter', {
             Carlos Idriss</p>
           `
         },
-        color: 'blue',
-        fontFamily: 'Arial',
+        colorId: 0,
         fontSize: '16',
-        score:85,
-        templateId: 'defaultTemplate',
+        score: 85,
+        templateId: 0,
+        colors: [
+            { id: 0, bgColor: 'bg-blue-500', ringColor: 'ring-blue-500' },
+            { id: 1, bgColor: 'bg-yellow-500', ringColor: 'ring-yellow-500' },
+            { id: 2, bgColor: 'bg-amber-500', ringColor: 'ring-amber-500' },
+            { id: 3, bgColor: 'bg-green-500', ringColor: 'ring-green-500' },
+            { id: 4, bgColor: 'bg-red-500', ringColor: 'ring-red-500' },
+
+        ],
+        textcolors:[
+            { id: 0, textColor: 'text-blue-500' },
+            { id: 1, textColor: 'text-yellow-500'  },
+            { id: 2, textColor: 'text-amber-500' },
+            { id: 3, textColor: 'text-green-500' },
+            { id: 4, textColor: 'text-red-500' },
+        ],
     }),
     getters: {
+        currentColor: (state) => {
+            return state.colors.find(color => color.id === state.colorId + 1);
+        }
     },
     actions: {
         setFormData(data) {
             this.formData = data;
         },
-        setColor(color) {
-            this.color = color;
-        },
+        setColor(colorId) {
+            this.colorId = colorId;
+        }
+        ,
         setFontFamily(fontFamily) {
             this.fontFamily = fontFamily;
         },

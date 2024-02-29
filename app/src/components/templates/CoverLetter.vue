@@ -1,36 +1,33 @@
 <template>
-    <div :style="{ fontSize: coverLetterStore.fontSize }">
-        <div class="flex flex-nowrap">
-            <div class="w-2/3">
-                <h2 class="text-blue-500 capitalize font-semibold  text-3xl">
-                    <p>{{ coverLetterStore.formData.Fullname }}</p>
-                </h2>
-                <span class="text-gray-500">{{ coverLetterStore.formData.email }}</span> <br>
-                <span class="text-gray-500">{{ coverLetterStore.formData.number }}</span> <br>
-                <span class="text-gray-500">{{ coverLetterStore.formData.adress }}</span> <br>
-                <p class="text-gray-500">{{ coverLetterStore.formData.position }}</p>
-            </div>
-            <div>
-                <h2 class="text-blue-500 capitalize font-semibold  text-2xl">
-                    To
-                </h2>
-                <span class="text-gray-500">{{ coverLetterStore.formData.companyName }}</span> <br>
-                <span class="text-gray-500">{{ coverLetterStore.formData.hiringManagerName }}</span> <br>
-
-            </div>
-        </div>
-
-        <div v-html="coverLetterStore.formData.letterDetails" class="leading-6 pt-4">
-        </div>
+    <div>
+        <component :is="Components[1]" :formData="formData"></component>
     </div>
 </template>
-  
-<script setup>
-import { useCoverLetterStore } from '../../stores/coverLetterStore';
 
-const coverLetterStore = useCoverLetterStore();
+<script>
+import { useCoverLetterStore } from '@/stores/coverLetterStore';
+import Template1Vue from './coverLetter/reel/Template1.vue';
+import Template2Vue from './coverLetter/reel/Template2.vue';
+import Template3Vue from './coverLetter/reel/Template3.vue';
 
+export default {
+    data() {
+        return {
+            templateIdx: 0, 
+            formData: {}, 
+            Components: [
+                Template1Vue,
+                Template2Vue,
+                Template3Vue,
+            ],
+        }
+    },
+    mounted() {
+        const store = useCoverLetterStore();
+        this.templateIdx = store.templateId; 
+        this.formData = store.formData; 
+    },
+}
 </script>
-
 
 <style></style>

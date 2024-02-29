@@ -26,7 +26,6 @@
                     <div class="flex flex-wrap rounded-lg ">
                         <div class="w-full lg:w-3/12 h-screen  rounded-l-xl border-gray-100 border-r overflow-y-auto pb-8">
                             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6">
-                               
                                 <nav class="flex flex-1 pt-16 flex-col">
                                     <ul role="list" class="flex flex-1 p-3 flex-col gap-y-7">
                                         <li>
@@ -62,7 +61,8 @@
     
 <script setup>
 import Avatar from '@/components/ui/Avatar.vue';
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import {
     Dialog,
     DialogPanel,
@@ -100,12 +100,20 @@ const navigation = [
   { name: 'Cover Letter', href: '#', icon: Paper, count: '12', current: false },
   { name: 'Job Interview', href: '#', icon: Video, count: '20+', current: false },
   { name: 'Application', href: '#', icon: Folder, current: false },
-  { name: 'Billing', href: '#', icon: Wallet, current: false },
+  { name: 'Plan & Billing', href: '#', icon: Wallet, current: false },
   { name: 'Chat AI', href: '#', icon: Message, current: false },
   { name: 'Settings', href: '/settings', icon: Settings, current: false },
 
 ]
+const updateCurrentNavigation = () => {
+  if (navigation && navigation.value) {
+    navigation.value.forEach(item => {
+      item.current = route.path === item.href;
+    });
+  }
+};
 
+const route = useRoute()
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import FolderVue from '../components/icons/Folder.vue'
 import wallet from "@/components/icons/Wallet.vue";
@@ -114,5 +122,14 @@ const userNavigation = [
     { name: 'Upgrade Now', href: '#' },
     { name: 'Sign out', href: '#' },
 ]
+
+
+// Mise à jour initiale lors du montage du composant
+onMounted(() => {
+  updateCurrentNavigation()
+})
+
+// Réagir aux changements de route pour mettre à jour la navigation
+watch(() => route.path, updateCurrentNavigation)
 </script>
   
