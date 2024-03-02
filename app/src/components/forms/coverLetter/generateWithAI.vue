@@ -82,7 +82,7 @@
                                                             Job link
                                                         </label>
                                                         <input
-                                                            class="appearance-none p-3 border border-gray-700 text-sm w-full rounded-lg  focus:outline-none"
+                                                            class="appearance-none p-3 bg-gray-100 text-sm w-full rounded-lg  focus:outline-none"
                                                             id="jobLink" type="text" v-model="jobLink" spellcheck="false">
                                                     </div>
                                                     <div class="relative">
@@ -100,7 +100,7 @@
                                                                 Job Description (Recomanded)</label>
                                                             <div class="mt-2">
                                                                 <textarea rows="4" name="comment" id="comment"
-                                                                    class="block w-full rounded-md  py-1.5 text-gray-900 focus:border-gray-700 focus:border border-gray-700  placeholder:text-gray-400 border sm:text-sm sm:leading-6" />
+                                                                    class="block w-full rounded-md  py-1.5 text-gray-900 focus:border appearance-none p-3 bg-gray-100 text-sm w-full rounded-lg  focus:outline-none  placeholder:text-gray-400  sm:text-sm sm:leading-6" />
                                                             </div>
                                                         </div>
                                                     </div>

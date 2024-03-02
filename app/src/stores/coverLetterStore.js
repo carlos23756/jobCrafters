@@ -7,9 +7,11 @@ export const useCoverLetterStore = defineStore('coverLetter', {
             position: 'software Develloper',
             companyName: 'JobCrafters Gmbh',
             hiringManagerName: 'Marc carlos',
-            adress: 'Mainkofen ,deggendorf',
+            address: 'Mainkofen ,deggendorf',
             email: 'adasheik01@gmail.com',
             number: '178 732 16 94',
+            website:'www.marco-carlos.com',
+            linkedin:"@idriss.carlos",
             letterDetails: `
             <p>Dear Hiring Manager,</p>
             <p>I am writing to express my keen interest in the Web Designer position at Google, as I believe my creative skills and technical expertise align perfectly with the innovative culture that Google embodies. With a comprehensive understanding of design principles and a commitment to creating visually appealing and user-friendly interfaces, I am eager to bring my unique blend of talents to the Google team.</p> <br>

@@ -174,10 +174,10 @@
                                                                             </div>
                                                                         </div>
                                                                         <div
-                                                                            class="w-full lg:w-2/3 border-l bg-pattern-light bg-gray-100 overflow-auto h-screen p-6">
+                                                                            class="w-full lg:w-2/3 border-l pt-10 pr-4 pl-4 pb-10 bg-pattern-light bg-gray-100 overflow-auto h-screen ">
 
                                                                             <div
-                                                                                class="a4 pt-8 pr-4 bg-white  pl-4 rounded-lg text-gray-900 ">
+                                                                                class="a4 bg-white  rounded-lg text-gray-900 ">
                                                                                 <!--Cover Letter-->
                                                                                 <!--Cover Letter-->
 
@@ -198,7 +198,7 @@
                                         </TransitionRoot>
                                     </div>
                                 </div>
-                                <div class="bg-white a4 p-10 text-gray-900 rounded-lg w-full h-svh h-fit" style="zoom: 61%;"
+                                <div class="bg-white a4  text-gray-900 rounded-lg w-full h-svh h-fit" style="zoom: 61%;"
                                     id="resumePreview">
                                     <!--Cover Letter-->
                                     <!--Cover Letter-->
@@ -324,9 +324,7 @@ export default {
     width: 206mm;
     height: 293mm;
     margin: auto;
-    padding-left: 25mm;
-    padding-right: 25mm;
-    padding-top: 25mm;
+   
 
 }
 </style>
