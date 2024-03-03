@@ -12,8 +12,8 @@ import Template3Vue from './coverLetter/reel/Template3.vue';
 export default {
     data() {
         return {
-            templateIdx: 0, 
-            formData: {}, 
+            templateIdx: 0,
+            formData: {},
             fillColors: "",
             textColors: "",
             color: "",
@@ -26,15 +26,17 @@ export default {
     },
     mounted() {
         const storeInfo = useCoverLetterStore();
-        this.formData = storeInfo.formData; 
+        this.formData = storeInfo.formData;
         //-----------------------------------------------------
         const store = this.$coverLetterStyleStore;
         store.generateColors();
         const storex = store.coverLetterTemplates;
-        console.log(storex.getCurrentTextColor);
-        
+        const a = storex.getCurrentTextColor;
+        console.log(a);
+
     },
 }
 </script>
 
 <style></style>
+    

@@ -45,6 +45,12 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
         getCurrentColors: (state) => {
             return state.coverLetterTemplates[state.currentTemplateId]?.colors || [];
         },
+        getCurrentTextColors: (state) => {
+            return state.coverLetterTemplates[state.currentTemplateId]?.textcolors || [];
+        },
+        getCurrentFillColors: (state) => {
+            return state.coverLetterTemplates[state.currentTemplateId]?.fillColors || [];
+        },
 
         getCurrentColorId: (state) => {
             return state.coverLetterTemplates[state.currentTemplateId]?.currentColorId || 0;
@@ -53,10 +59,7 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
             return state.coverLetterTemplates[state.currentTemplateId]?.currentColorId || 0;
         },
         getCurrentTextColor: (state) => {
-            const currentTextColorArrayofTheCurrentTemplate = state.coverLetterTemplates[state.currentTemplateId]?.textcolors;
-            //const currentColorId = state.coverLetterTemplates[state.currentTemplateId]?.currentColorId;
-            //convert proxy object to normal object(currentTextColorArrayofTheCurrentTemplate)
-            // const textColor = currentTextColorArrayofTheCurrentTemplate[currentColorId];
+            const ctextColor = this.getCurrentTextColors;
             return "currentTextColorArrayofTheCurrentTemplate";
         },
     },
