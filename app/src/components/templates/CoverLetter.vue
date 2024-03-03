@@ -9,7 +9,7 @@ import { useCoverLetterStore } from '@/stores/coverLetterStore';
 import Template1Vue from './coverLetter/reel/Template1.vue';
 import Template2Vue from './coverLetter/reel/Template2.vue';
 import Template3Vue from './coverLetter/reel/Template3.vue';
-
+import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
 export default {
     data() {
         return {
@@ -26,6 +26,7 @@ export default {
         const store = useCoverLetterStore();
         this.templateIdx = store.templateId; 
         this.formData = store.formData; 
+        useCoverLetterStyleDoc().generateColors();
     },
 }
 </script>

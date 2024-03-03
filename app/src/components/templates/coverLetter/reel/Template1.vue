@@ -3,7 +3,8 @@
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="108" class="relative" style="left: 95%;" height="124"
                 viewBox="0 0 108 124" fill="none" :class="getFillColor">
-                <path d="M0 -39H108V70C108 99.8234 83.8234 124 54 124C24.1766 124 0 99.8234 0 70V-39Z"  :class="getFillColor"/>
+                <path d="M0 -39H108V70C108 99.8234 83.8234 124 54 124C24.1766 124 0 99.8234 0 70V-39Z"
+                    :class="getFillColor" />
             </svg>
             <div>
                 <div class="flex">
@@ -12,7 +13,7 @@
                             <h2 class="capitalize font-semibold text-3xl" :class="getThecolor">
                                 {{ formData.Fullname }}
                             </h2>
-                            <span class="text-gray-600 text-xl">{{ formData.position }}</span>
+                            <span class="text-gray-600 text-xl font-semibold">{{ formData.position }}</span>
                         </div>
                         <div class="pt-3">
                             <span class="capitalize">
@@ -35,10 +36,10 @@
                     </div>
                 </div>
             </div>
-            <div v-html="formData.letterDetails" class="leading-6 pt-6" >
+            <div v-html="formData.letterDetails" class="leading-6 pt-6" style="font-weight: lighter;">
             </div>
         </div>
-        
+
     </div>
 </template>
 
@@ -59,7 +60,7 @@ export default {
     },
     props: ["formData"],
     computed: {
-       
+
         getThecolor() {
             const color = this.textcolors[this.currentColorId]
             const colorObj = Object.assign({}, color);
@@ -69,11 +70,13 @@ export default {
             const fill = this.fillColors[this.currentColorId]
             const fillObj = Object.assign({}, fill);
             return fillObj.fill;
-           
+
         },
     },
     mounted() {
         const store = useCoverLetterStyleDoc();
+        //Generate colors
+        store.generateColors();
         const storex = store.coverLetterTemplates
         this.currentColorId = storex[0].currentColorId;
         this.colors = storex[0].colors;
@@ -87,5 +90,6 @@ export default {
 .a4 {
     padding-left: 22mm;
     padding-right: 22mm;
+    color: #000;
 }
 </style>
