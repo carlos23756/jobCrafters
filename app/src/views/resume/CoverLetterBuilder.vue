@@ -24,7 +24,7 @@
                                                 Create a professional Resume choose The good options. <br>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="max-w-4xl mx-auto">
@@ -65,8 +65,8 @@
                                                     <span class="isolate inline-flex rounded-md shadow-sm">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="29"
                                                             viewBox="0 0 75 75" fill="none">
-                                                            <rect x="2" y="2" width="71" height="71" rx="8" stroke="white"
-                                                                stroke-width="4" />
+                                                            <rect x="2" y="2" width="71" height="71" rx="8"
+                                                                stroke="white" stroke-width="4" />
                                                             <path
                                                                 d="M15.966 50L26.302 25.86H31.198L41.534 50H35.89L33.748 44.9H23.752L21.61 50H15.966ZM28.75 32.966L25.69 40.208H31.776L28.75 32.966ZM42.69 42.384V37.93H47.62V33H52.04V37.93H56.97V42.384H52.04V47.314H47.62V42.384H42.69Z"
                                                                 fill="white" />
@@ -79,7 +79,7 @@
                                                 <!-- Download-->
 
                                                 <div class="inline-flex rounded-md">
-                                                    <button type="button"
+                                                    <button type="button" @click="generatePdf"
                                                         class="relative inline-flex items-center rounded-l-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white   focus:z-10">
                                                         Download PDF</button>
                                                     <Menu as="div" class="relative -ml-px block">
@@ -88,7 +88,8 @@
                                                             <span class="sr-only">Open options</span>
                                                             <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
                                                         </MenuButton>
-                                                        <transition enter-active-class="transition ease-out duration-100"
+                                                        <transition
+                                                            enter-active-class="transition ease-out duration-100"
                                                             enter-from-class="transform opacity-0 scale-95"
                                                             enter-to-class="transform opacity-100 scale-100"
                                                             leave-active-class="transition ease-in duration-75"
@@ -101,7 +102,7 @@
                                                                         v-slot="{ active }">
                                                                     <a :href="item.href"
                                                                         :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">{{
-                                                                            item.name }}</a>
+                                                    item.name }}</a>
                                                                     </MenuItem>
                                                                 </div>
                                                             </MenuItems>
@@ -128,8 +129,10 @@
                                                     <div
                                                         class="flex min-h-80 items-center justify-center  my-8 text-center">
                                                         <TransitionChild as="template" enter="duration-300 ease-out"
-                                                            enter-from="opacity-0 scale-95" enter-to="opacity-100 scale-100"
-                                                            leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
+                                                            enter-from="opacity-0 scale-95"
+                                                            enter-to="opacity-100 scale-100"
+                                                            leave="duration-200 ease-in"
+                                                            leave-from="opacity-100 scale-100"
                                                             leave-to="opacity-0 scale-95">
                                                             <DialogPanel
                                                                 class=" w-full max-w-7xl mt-2 transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle  transition-all">
@@ -157,11 +160,13 @@
                                                                             <div class="p-2">
                                                                                 <div class="mt-4 p-2">
                                                                                     <p class="text-xs text-gray-600">
-                                                                                        Your payment has been successfully
+                                                                                        Your payment has been
+                                                                                        successfully
                                                                                         submitted. We’ve
                                                                                         sent
                                                                                         you
-                                                                                        an email with all of the details of
+                                                                                        an email with all of the details
+                                                                                        of
                                                                                         your
                                                                                         order.
                                                                                     </p>
@@ -223,7 +228,7 @@
 
 
 import HardSkillCardVue from '../../components/forms/res/HardSkillCard.vue';
-
+import axios from 'axios';
 import {
     ChevronDownIcon
 } from '@heroicons/vue/20/solid'
@@ -298,6 +303,47 @@ export default {
         },
         deleteHardSkill(id) {
             this.hardSkills.splice(id, 1);
+        },
+        generatePdf() {
+            // Get the HTML content and styles
+            const cvContent = document.getElementById('resumePreview').innerHTML;
+            const cvStyles = `
+                <style>
+                @font-face{font-family:euclid circular a;font-style:normal;font-weight:400;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Regular.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:400;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:300;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Light.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:300;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Light Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:500;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Medium.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:500;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Medium Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:600;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A SemiBold.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:600;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A SemiBold Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:700;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Bold.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:700;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Bold Italic.woff') format('woff')}
+                body {
+                    font-family: 'Euclid Circular A', sans-serif;
+                    padding-left: 20mm;
+                    padding-right: 20mm;
+                    margin: 0 !important;
+                }
+                h1 {
+                    color: #333;
+                }
+                /* Add more styles as needed */
+                </style>
+            `;
+
+            // Combine HTML content and styles
+            const combinedHtml = `${cvStyles}<div id="cv">${cvContent}</div>`;
+
+            axios.post('http://localhost:3000/generatePDF', {
+                cv: combinedHtml
+            }, {
+                responseType: 'blob'
+            }).then((response) => {
+                const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+                const pdfUrl = URL.createObjectURL(pdfBlob);
+
+                // Create a link element and trigger the download
+                const link = document.createElement('a');
+                link.href = pdfUrl;
+                link.setAttribute('download', 'cv.pdf');
+                document.body.appendChild(link);
+                link.click();
+
+                // Clean up the link element
+                document.body.removeChild(link);
+            });
         }
     }
 }
@@ -324,7 +370,7 @@ export default {
     width: 206mm;
     height: 293mm;
     margin: auto;
-   
+
 
 }
 </style>

@@ -27,29 +27,19 @@
 </template>
   
 <script>
-import { computed } from 'vue';
-import { useCoverLetterStore } from '@/stores/coverLetterStore';
+
+import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
 import { RadioGroup, RadioGroupLabel } from '@headlessui/vue';
 
 export default {
     components: { RadioGroup, RadioGroupLabel },
-    setup() {
-        const store = useCoverLetterStore();
-
-        // Using a computed property to automatically update when store's state changes
-        const selectedColor = computed(() => store.colorId);
-        const colors = computed(() => store.colors);
-
-        function updateSelectedColor(colorId) {
-            store.setColor(colorId);
-        }
-
-        return {
-            selectedColor,
-            colors,
-            updateSelectedColor,
-        };
+    mounted() {
+        const store = useCoverLetterStyleDoc();
+        this.colors= store.getCurrentColors;
+        this.selectedColor = store.getCurrentColorId;
+        
     },
+ 
 };
 </script>
   

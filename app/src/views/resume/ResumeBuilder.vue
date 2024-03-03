@@ -154,7 +154,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>div
                                 </div>
                             </div>
                         </div>
@@ -200,9 +200,10 @@
                                                 <!-- Download-->
 
                                                 <div class="inline-flex rounded-md">
-                                                    <button type="button"
+                                                    <button type="button"  @click="generatePdf"
                                                         class="relative inline-flex items-center rounded-l-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white   focus:z-10">
-                                                        Download PDF</button>
+                                                        Download PDF
+                                                    </button>
                                                     <Menu as="div" class="relative -ml-px block">
                                                         <MenuButton
                                                             class="relative inline-flex items-center rounded-r-md border-l border-blue-700 bg-blue-600 px-2 py-2 text-white">
@@ -326,7 +327,7 @@
 <script>
 import LsjobInput from "../../components/forms/res/form/LsJobInput.vue"
 import HardSkillCardVue from '../../components/forms/res/HardSkillCard.vue';
-
+import axios from 'axios';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import {
     TransitionRoot,
@@ -387,7 +388,48 @@ export default {
         ,
         deleteHardSkill(id) {
             this.hardSkills.splice(id, 1);
-        }
+        },
+        generatePdf() {
+      // Get the HTML content and styles
+      const cvContent = document.getElementById('cv').innerHTML;
+      const cvStyles = `
+            <style>
+            @font-face{font-family:euclid circular a;font-style:normal;font-weight:400;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Regular.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:400;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:300;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Light.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:300;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Light Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:500;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Medium.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:500;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Medium Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:600;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A SemiBold.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:600;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A SemiBold Italic.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:normal;font-weight:700;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Bold.woff') format('woff')}@font-face{font-family:euclid circular a;font-style:italic;font-weight:700;src:local('Euclid Circular A'),url('https://fonts.cdnfonts.com/s/60248/Euclid Circular A Bold Italic.woff') format('woff')}
+            body {
+                font-family: 'Euclid Circular A', sans-serif;
+                padding-left: 20mm;
+                padding-right: 20mm;
+                margin: 0;
+            }
+            h1 {
+                color: #333;
+            }
+            /* Add more styles as needed */
+            </style>
+        `;
+
+      // Combine HTML content and styles
+      const combinedHtml = `${cvStyles}<div id="cv">${cvContent}</div>`;
+
+      axios.post('http://localhost:3000/generatePDF', {
+        cv: combinedHtml
+      }, {
+        responseType: 'blob'
+      }).then((response) => {
+        const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+
+        // Create a link element and trigger the download
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.setAttribute('download', 'cv.pdf');
+        document.body.appendChild(link);
+        link.click();
+
+        // Clean up the link element
+        document.body.removeChild(link);
+      });
+    }
     }
 }
 </script>
