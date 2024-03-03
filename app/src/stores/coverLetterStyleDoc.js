@@ -31,7 +31,7 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
         generateColors() {
             if (this.coverLetterTemplates.length === 0) {
                 //Template 1
-                this.generateTemplateColors(["yellow",  "blue", "red"]);
+                this.generateTemplateColors(["yellow", "blue", "red"]);
                 //Template 2
                 this.generateTemplateColors(["gray", "yellow"]);
             }
@@ -48,6 +48,16 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
 
         getCurrentColorId: (state) => {
             return state.coverLetterTemplates[state.currentTemplateId]?.currentColorId || 0;
+        },
+        getCurrentColorIdOfTheCurrentTemplate: (state) => {
+            return state.coverLetterTemplates[state.currentTemplateId]?.currentColorId || 0;
+        },
+        getCurrentTextColor: (state) => {
+            const currentTextColorArrayofTheCurrentTemplate = state.coverLetterTemplates[state.currentTemplateId]?.textcolors;
+            //const currentColorId = state.coverLetterTemplates[state.currentTemplateId]?.currentColorId;
+            //convert proxy object to normal object(currentTextColorArrayofTheCurrentTemplate)
+            // const textColor = currentTextColorArrayofTheCurrentTemplate[currentColorId];
+            return "currentTextColorArrayofTheCurrentTemplate";
         },
     },
 });

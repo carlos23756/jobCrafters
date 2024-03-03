@@ -9,12 +9,14 @@ import { useCoverLetterStore } from '@/stores/coverLetterStore';
 import Template1Vue from './coverLetter/reel/Template1.vue';
 import Template2Vue from './coverLetter/reel/Template2.vue';
 import Template3Vue from './coverLetter/reel/Template3.vue';
-import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
 export default {
     data() {
         return {
             templateIdx: 0, 
             formData: {}, 
+            fillColors: "",
+            textColors: "",
+            color: "",
             Components: [
                 Template1Vue,
                 Template2Vue,
@@ -23,10 +25,14 @@ export default {
         }
     },
     mounted() {
-        const store = useCoverLetterStore();
-        this.templateIdx = store.templateId; 
-        this.formData = store.formData; 
-        useCoverLetterStyleDoc().generateColors();
+        const storeInfo = useCoverLetterStore();
+        this.formData = storeInfo.formData; 
+        //-----------------------------------------------------
+        const store = this.$coverLetterStyleStore;
+        store.generateColors();
+        const storex = store.coverLetterTemplates;
+        console.log(storex.getCurrentTextColor);
+        
     },
 }
 </script>

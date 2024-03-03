@@ -2,15 +2,14 @@
     <div class="cvl a4">
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="108" class="relative" style="left: 95%;" height="124"
-                viewBox="0 0 108 124" fill="none" :class="getFillColor">
-                <path d="M0 -39H108V70C108 99.8234 83.8234 124 54 124C24.1766 124 0 99.8234 0 70V-39Z"
-                    :class="getFillColor" />
+                viewBox="0 0 108 124" fill="none">
+                <path d="M0 -39H108V70C108 99.8234 83.8234 124 54 124C24.1766 124 0 99.8234 0 70V-39Z" />
             </svg>
             <div>
                 <div class="flex">
                     <div class="w-1/2">
                         <div class="user_info">
-                            <h2 class="capitalize font-semibold text-3xl" :class="getThecolor">
+                            <h2 class="capitalize font-semibold text-3xl">
                                 {{ formData.Fullname }}
                             </h2>
                             <span class="text-gray-600 text-xl font-semibold">{{ formData.position }}</span>
@@ -44,9 +43,6 @@
 </template>
 
 <script>
-import { useCoverLetterStyleDoc } from '../../../../stores/coverLetterStyleDoc'
-
-
 export default {
     name: "Template1",
     data() {
@@ -61,27 +57,9 @@ export default {
     props: ["formData"],
     computed: {
 
-        getThecolor() {
-            const color = this.textcolors[this.currentColorId]
-            const colorObj = Object.assign({}, color);
-            return colorObj.textColor;
-        },
-        getFillColor() {
-            const fill = this.fillColors[this.currentColorId]
-            const fillObj = Object.assign({}, fill);
-            return fillObj.fill;
-
-        },
     },
     mounted() {
-        const store = useCoverLetterStyleDoc();
-        //Generate colors
-        store.generateColors();
-        const storex = store.coverLetterTemplates
-        this.currentColorId = storex[0].currentColorId;
-        this.colors = storex[0].colors;
-        this.fillColors = storex[0].fillColors;
-        this.textcolors = storex[0].textcolors;
+
     }
 }
 </script>
