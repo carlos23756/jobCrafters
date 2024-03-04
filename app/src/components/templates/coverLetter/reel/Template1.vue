@@ -9,7 +9,7 @@
                 <div class="flex">
                     <div class="w-1/2">
                         <div class="user_info">
-                            <h2 class="capitalize font-semibold text-3xl">
+                            <h2 class="capitalize font-semibold text-3xl" :class="textColor">
                                 {{ formData.Fullname }}
                             </h2>
                             <span class="text-gray-600 text-xl font-semibold">{{ formData.position }}</span>
@@ -20,7 +20,7 @@
                             </span> <br>
                             <span class="text-gray-800">{{ formData.companyName }}</span> <br>
                             <span class="text-gray-800">{{ formData.hiringManagerName }}</span> <br>
-                            <span class="text-sm capitalize" :class="getThecolor">November 29 , 2024</span>
+                            <span class="text-sm capitalize" :class="textColor">November 29 , 2024</span>
                         </div>
                     </div>
                     <div class="w-1/2">
@@ -54,7 +54,7 @@ export default {
             fillColors: []
         }
     },
-    props: ["formData"],
+    props: ["formData","textColor"],
     computed: {
 
     },

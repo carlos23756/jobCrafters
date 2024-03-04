@@ -40,11 +40,9 @@ export default {
     methods:{
         updateSelectedColor(index) {
             this.selectedColor = index;
-            const coverLetterStyleStore = this.$coverLetterStyleStore;
-            
+            const coverLetterStyleStore = this.$coverLetterStyleStore; 
            //set the current color id
             coverLetterStyleStore.setThecurrentColorIdOfTheCurrentTemplate(index);
-            console.log(coverLetterStyleStore.coverLetterTemplates[0]);
         }
     },
     components: { RadioGroup, RadioGroupLabel },

@@ -316,8 +316,41 @@ export default {
                     padding-right: 20mm;
                     margin: 0 !important;
                 }
-                h1 {
-                    color: #333;
+                h1 { color: #333;}
+                .capitalize{text-transform: capitalize;}
+                .flex{ display: flex;}
+               
+                .text-blue-500{color: #3b82f6;}
+                lg:w-1/2{
+                    width: 50% !important;
+                }
+                .pt-3{
+                    padding-top: 0.75rem;
+                }
+                .text-3xl{
+                    font-size: 1.875rem;
+                }
+                .text-gray-800{
+                    color: #374151;
+                }
+                .underline{
+                    text-decoration: underline;
+                }
+                .text-sm{
+                    font-size: 0.875rem;
+                }
+                .text-gray-600{
+                    color: #6b7280;
+                }
+                
+                .text-xl{
+                    font-size: 1.25rem;
+                } 
+                .font-semibold{
+                    font-weight: 600;
+                }
+                .leading-6{
+                    line-height: 1.5rem;
                 }
                 /* Add more styles as needed */
                 </style>

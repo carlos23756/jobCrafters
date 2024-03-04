@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="Components[0]" :formData="formData"></component>
+        <component :is="Components[0]" :formData="formData" :textColor="textColors"></component>
     </div>
 </template>
 
@@ -30,13 +30,17 @@ export default {
         //-----------------------------------------------------
         const store = this.$coverLetterStyleStore;
         store.generateColors();
-        const storex = store.coverLetterTemplates;
-        const a = storex.getCurrentTextColor;
-        console.log(a);
+        store.coverLetterTemplates;
+
+        //-----------------------------------------------------
+        const color = store.getCurrentTextColors[store.getCurrentColorId]
+        const colorObj = Object.assign({}, color);
+        this.textColors = colorObj.textColor;
+    },
+    watch: {
 
     },
 }
 </script>
 
 <style></style>
-    
