@@ -359,22 +359,19 @@ export default {
             // Combine HTML content and styles
             const combinedHtml = `${cvStyles}<div id="cv">${cvContent}</div>`;
 
-            axios.post('http://localhost:3000/generatePDF', {
+            axios.post('https://agile-wildwood-20343-4da5892799b0.herokuapp.com/generatePDFX', {
                 cv: combinedHtml
             }, {
                 responseType: 'blob'
             }).then((response) => {
                 const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
                 const pdfUrl = URL.createObjectURL(pdfBlob);
-
-                // Create a link element and trigger the download
                 const link = document.createElement('a');
                 link.href = pdfUrl;
                 link.setAttribute('download', 'cv.pdf');
                 document.body.appendChild(link);
                 link.click();
 
-                // Clean up the link element
                 document.body.removeChild(link);
             });
         }
