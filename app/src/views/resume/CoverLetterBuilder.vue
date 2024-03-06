@@ -229,6 +229,8 @@
 
 import HardSkillCardVue from '../../components/forms/res/HardSkillCard.vue';
 import axios from 'axios';
+import confetti from 'canvas-confetti';
+
 import {
     ChevronDownIcon
 } from '@heroicons/vue/20/solid'
@@ -304,6 +306,24 @@ export default {
         deleteHardSkill(id) {
             this.hardSkills.splice(id, 1);
         },
+        generateConfetti() {
+            let duration = 2 * 1000; 
+            let end = Date.now() + duration;
+
+            let interval = setInterval(() => {
+                // If the current time is greater than the end time
+                if (Date.now() > end) {
+                    // Stop the interval
+                    return clearInterval(interval);
+                }
+
+                // Fire confetti
+                confetti.create(document.getElementById('canvas'), {
+                    resize: true,
+                    useWorker: true,
+                })({ particleCount: 300, spread: 200, origin: { y: 0.3 } });
+            }, 250); // adjust this value to fire more or less frequently
+        },
         generatePdf() {
             // Get the HTML content and styles
             const cvContent = document.getElementById('resumePreview').innerHTML;
@@ -373,6 +393,12 @@ export default {
                 link.click();
 
                 document.body.removeChild(link);
+                //generate confetti from bottom right to top left with canvas-confetti
+                this.generateConfetti();
+
+
+
+
             });
         }
     }
