@@ -321,7 +321,7 @@ export default {
                 confetti.create(document.getElementById('canvas'), {
                     resize: true,
                     useWorker: true,
-                })({ particleCount: 300, spread: 200, origin: { y: 0.3 } });
+                })({ particleCount: 300, spread: 200, origin: { y: 0.7 } });
             }, 250); // adjust this value to fire more or less frequently
         },
         generatePdf() {
