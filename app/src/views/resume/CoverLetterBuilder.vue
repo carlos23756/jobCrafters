@@ -311,13 +311,10 @@ export default {
             let end = Date.now() + duration;
 
             let interval = setInterval(() => {
-                // If the current time is greater than the end time
                 if (Date.now() > end) {
-                    // Stop the interval
                     return clearInterval(interval);
                 }
 
-                // Fire confetti
                 confetti.create(document.getElementById('canvas'), {
                     resize: true,
                     useWorker: true,
@@ -393,12 +390,7 @@ export default {
                 link.click();
 
                 document.body.removeChild(link);
-                //generate confetti from bottom right to top left with canvas-confetti
                 this.generateConfetti();
-
-
-
-
             });
         }
     }

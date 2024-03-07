@@ -181,7 +181,7 @@ export default {
     methods: {
         async fetchPageContent() {
             try {
-                const response = await axios.get(`http://localhost:3000/scrape?url=${this.jobLink}`);
+                const response = await axios.get(`https://agile-wildwood-20343-4da5892799b0.herokuapp.com/scrape?url=${this.jobLink}`);
                 this.pageContent = response.data.text;
                 this.loading = false
             } catch (error) {
