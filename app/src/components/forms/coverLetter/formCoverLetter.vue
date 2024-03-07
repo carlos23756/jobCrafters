@@ -90,37 +90,33 @@
                 <div class="pb-2">
                     <div class="text-xl text-gray-800 font-semibold">Letter Details</div>
                     <span class="text-xs text-gray-500">3–4 paragraphs explaining why you're the perfect candidate for a
-                        specific job</span>
+                        specific job .</span>
                 </div>
-                <QuillEditor v-model="editorContent" theme="snow" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import {
-    QuillEditor
-} from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
 import LsJobInputVue from '../res/form/LsJobInput.vue';
 import { useCoverLetterStore } from '../../../stores/coverLetterStore';
 import { computed, ref } from 'vue';
 
 export default {
+    data() {
+    return {
+      // Initialize with the initial content
+      editorContent: "lorem ipsum",
+    };
+  },
     components: {
-        QuillEditor,
         LsJobInputVue
     },
     setup() {
 
         const coverLetterStore = useCoverLetterStore();
-        const editorContent = computed({
-            get: () => coverLetterStore.formData.letterDetails,
-            set: (value) => {
-                coverLetterStore.formData.letterDetails = value;
-            }
-        });
+       
 
         const fullName = computed({
             get: () => coverLetterStore.formData.Fullname,
@@ -184,13 +180,14 @@ export default {
             }
         });
         
+        const editorContent = computed({
+            get: () => coverLetterStore.formData.letterDetails,
+            set: (value) => {
+                coverLetterStore.formData.letterDetails = value;
+            }
+        });
 
-
-        
-
-        // Retournez toutes les propriétés réactives pour les utiliser dans le template
         return {
-            editorContent,
             fullName,
             position,
             companyName,

@@ -256,6 +256,7 @@ import GenerateWithAI from '@/components/forms/coverLetter/generateWithAI.vue';
 export default {
     data() {
         return {
+            editorContent: 'uitsz',
             isOpen: false,
             score: 85,
             items: [{
