@@ -87,7 +87,7 @@ import Folder from '../components/icons/Folder.vue';
 import Message from '../components/icons/Message.vue';
 import Settings from '../components/icons/Settings.vue';
 import Video from '../components/icons/Video.vue';
-//import Paper from '../components/icons/Paper.vue';
+import Paper from '../components/icons/Paper.vue';
 import Dashboard from "../components/icons/Dashboard.vue"
 import Wallet from "@/components/icons/Wallet.vue";
 
