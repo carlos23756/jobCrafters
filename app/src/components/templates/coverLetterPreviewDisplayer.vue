@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
+
 import Template1 from './coverLetter/preview/Template1.vue'
 import Template2 from './coverLetter/preview/Template2.vue'
 import Template3 from './coverLetter/preview/Template3.vue'
