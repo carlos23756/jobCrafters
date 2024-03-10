@@ -43,6 +43,7 @@ import PricingVue from '@/views/Pricing.vue';
 import BlogVue from '@/views/blog/index.vue';
 import faqVue from '@/views/FAQ.vue';
 import Resume from "@/views/dashboard/Resume.vue";
+import resetPassword from "@/views/auth/ResetPassword.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -71,6 +72,10 @@ const router = createRouter({
     },
     {
       path: '/signup', name: 'SignUp', component: SignUp,
+      meta: { layout: AuthLayout }
+    },
+    {
+      path: '/resetPassword', name: 'resetPassword', component: resetPassword,
       meta: { layout: AuthLayout }
     },
     { path: '/dashboard', name: 'Dashboard', component: Dashboard },

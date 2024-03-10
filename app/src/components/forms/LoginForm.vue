@@ -13,14 +13,14 @@
         <div>
           <div class="mt-1 grid grid-cols-1 pb-4 gap-4">
             <button href="#"
-              class="flex w-full items-center justify-center  hover:bg-gray-100 gap-3 rounded-md p-4 text-sm font-semibold text-gray-900  bg-gray-50 focus-visible:ring-transparent">
+              class="flex w-full items-center justify-center border border-gray-100 gap-3 rounded-md p-4 text-sm font-semibold text-gray-900  focus-visible:ring-transparent">
             <img src="../../assets/svg/Google.svg" alt="Google logo" class="h-5 w-5" />
 
               <span class="text-sm font-semibold leading-6">Login with Google</span>
             </button>
 
             <button href="#"
-              class="flex w-full items-center hover:bg-gray-100 justify-center gap-3 rounded-md p-4 text-sm font-semibold text-gray-900 bg-gray-50 focus-visible:ring-transparent">
+              class="flex w-full items-center  border border-gray-100  justify-center gap-3 rounded-md p-4 text-sm font-semibold text-gray-900  focus-visible:ring-transparent">
             <img src="../../assets/svg/Linkindeln.svg" alt="Facebook logo" class="h-5 w-5" />
               
               <span class="text-sm font-semibold leading-6">Login with LinkedIn</span>
@@ -72,7 +72,7 @@
           <div>
             <div class="flex items-center justify-between">
               <div class="text-sm leading-6">
-                <a href="#" class="font-semibold text-blue-600 hover:text-blue-500">Forgot your password?</a>
+               
               </div>
             </div>
           </div>
