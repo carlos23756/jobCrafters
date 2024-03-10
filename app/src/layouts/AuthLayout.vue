@@ -1,8 +1,6 @@
 <template>
   <div class="auth-layout border-b">
-   
     <slot />
-
   </div>
 </template>
   

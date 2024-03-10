@@ -174,7 +174,9 @@
 
                                                                                 <div class="mt-4">
                                                                                     <!-- preview of cover letter-->
-                                                                                    <ResumePreviewDisplayerVue />
+                                                                                    <coverLetterPreviewDisplayerVue />
+                                                                                    <!-- preview of cover letter-->
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -253,6 +255,7 @@ import ResumePreviewDisplayerVue from '../../components/templates/ResumePreviewD
 import CoverLetter from '@/components/templates/CoverLetter.vue';
 import formCoverLetterVue from '../../components/forms/coverLetter/formCoverLetter.vue';
 import GenerateWithAI from '@/components/forms/coverLetter/generateWithAI.vue';
+import coverLetterPreviewDisplayerVue from '../../components/templates/coverLetterPreviewDisplayer.vue';
 export default {
     data() {
         return {
@@ -294,7 +297,9 @@ export default {
         ResumePreviewDisplayerVue,
         CoverLetter,
         formCoverLetterVue,
-        GenerateWithAI
+        GenerateWithAI,
+        coverLetterPreviewDisplayerVue
+
 
     },
     methods: {
@@ -308,7 +313,7 @@ export default {
             this.hardSkills.splice(id, 1);
         },
         generateConfetti() {
-            let duration = 2 * 1000; 
+            let duration = 2 * 1000;
             let end = Date.now() + duration;
 
             let interval = setInterval(() => {

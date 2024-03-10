@@ -41,29 +41,62 @@
                     </div>
 
                 </div>
-                <div class="pt-2 pb-8">
-                    <div class="text-blue-500 font-bold cursor-pointer text-sm">Mehr Informationen Anzeigen</div>
+                <div class="pt-2">
+                    <div class="text-blue-500 font-bold cursor-pointer text-sm" @click="showMoreinfo">
+
+                        <div class="flex flex-row">
+                            <div>
+                               Show more information
+                            </div>
+                            <div v-show="!moreinformation" class="pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    strokeWidth={1.5} stroke="currentColor" class="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                            <div v-show="moreinformation"  class="pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    strokeWidth={1.5} stroke="currentColor" class="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                                </svg>
+
+                            </div>
+                        </div>
+                    </div>
                     <br>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6" v-show="moreinformation">
 
-                    <div>
-                        <label class="block text-gray-800 text-xs " for="email">
-                            Website
-                        </label>
-                        <input class="appearance-none p-3 bg-gray-100  w-full rounded-lg focus:outline-none" id="website"
-                            type="text" v-model="website">
-                    </div>
-                    <div>
-                        <label class="block text-gray-800 text-xs " for="phone">
-                            linkedin
-                        </label>
-                        <input class="appearance-none p-3 bg-gray-100  w-full rounded-lg  focus:outline-none" id="phone"
-                            type="tel" v-model="linkedin">
-                    </div>
-                    
 
-                </div>
+                        <div>
+                            <label class="block text-gray-800 text-xs " for="email">
+                                Website
+                            </label>
+                            <input class="appearance-none p-3 bg-gray-100  w-full rounded-lg focus:outline-none"
+                                id="website" type="text" v-model="website">
+                        </div>
+                        <div>
+                            <label class="block text-gray-800 text-xs " for="phone">
+                                linkedin
+                            </label>
+                            <input class="appearance-none p-3 bg-gray-100  w-full rounded-lg  focus:outline-none"
+                                id="phone" type="tel" v-model="linkedin">
+                        </div>
+                        <div>
+                            <label class="block text-gray-800 text-xs " for="phone">
+                                Date
+                            </label>
+                            <Switch v-model="enabled"
+                                :class="[enabled ? 'bg-indigo-600' : 'bg-gray-200', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2']">
+                                <span class="sr-only">Use setting</span>
+                                <span aria-hidden="true"
+                                    :class="[enabled ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                            </Switch>
+
+
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
             <div>
@@ -73,8 +106,8 @@
                         <label class="block text-gray-800 text-xs   mb-2" for="CompanyName">
                             Company Name
                         </label>
-                        <input class="appearance-none p-3 bg-gray-100  w-full rounded focus:outline-none" id="CompanyName"
-                            type="text" v-model="companyName">
+                        <input class="appearance-none p-3 bg-gray-100  w-full rounded focus:outline-none"
+                            id="CompanyName" type="text" v-model="companyName">
                     </div>
                     <div>
                         <label class="block text-gray-800 text-xs mb-2" for="HiringManagerName">
@@ -85,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div>
                 <div class="pb-2">
                     <div class="text-xl text-gray-800 font-semibold">Letter Details</div>
@@ -103,20 +136,30 @@ import LsJobInputVue from '../res/form/LsJobInput.vue';
 import { useCoverLetterStore } from '../../../stores/coverLetterStore';
 import { computed, ref } from 'vue';
 
+import { Switch } from '@headlessui/vue'
+
+
 export default {
     data() {
-    return {
-      // Initialize with the initial content
-      editorContent: "lorem ipsum",
-    };
-  },
+        return {
+            // Initialize with the initial content
+            editorContent: "lorem ipsum",
+            enabled: false,
+            moreinformation: false
+        };
+    },
     components: {
         LsJobInputVue
+    },
+    methods: {
+        showMoreinfo() {
+            this.moreinformation = !this.moreinformation;
+        }
     },
     setup() {
 
         const coverLetterStore = useCoverLetterStore();
-       
+
 
         const fullName = computed({
             get: () => coverLetterStore.formData.Fullname,
@@ -179,7 +222,7 @@ export default {
                 coverLetterStore.formData.linkedin = value;
             }
         });
-        
+
         const editorContent = computed({
             get: () => coverLetterStore.formData.letterDetails,
             set: (value) => {
