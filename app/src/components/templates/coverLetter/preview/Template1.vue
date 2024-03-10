@@ -1,5 +1,5 @@
 <template>
-    <defaultTemplateVue :templateName="templateName" :formattype="formattype" />
+    <defaultTemplateVue :templateName="templateName" :formattype="formattype" :selected="selected" />
 </template>
 
 <script>
@@ -15,6 +15,12 @@ export default {
     components: {
         defaultTemplateVue
     },
+    props: {
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
 </script>
 

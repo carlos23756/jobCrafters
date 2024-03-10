@@ -1,21 +1,16 @@
 <template>
     <div>
         <div class="flex flex-wrap">
-            <div class="w-1/2 pr-1 pl-1 pb-6">
-                <Template1/>
+            <div v-for="(template, index) in templateList" :key="index" class="w-1/2 pr-1 pl-1 pb-6">
+                <component :is="template.component" :selected="template.selected"
+                    @click="changeCurrentTemplate(index)" />
             </div>
-            <div class="w-1/2 pr-1 pl-1 pb-6">
-                <Template2/>
-            </div>
-            <div class="w-1/2 pr-1 pl-1 pb-6">
-                <Template3/>
-            </div>
-         
         </div>
     </div>
 </template>
 
 <script>
+import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
 import Template1 from './coverLetter/preview/Template1.vue'
 import Template2 from './coverLetter/preview/Template2.vue'
 import Template3 from './coverLetter/preview/Template3.vue'
@@ -24,9 +19,28 @@ export default {
     components: {
         Template1,
         Template2,
-        Template3
-    }
-}
+        Template3,
+    },
+    data() {
+        return {
+            currentTemplate: 0,
+            templateList: [
+                { component: 'Template1', selected: this.currentTemplate === 0 },
+                { component: 'Template2', selected: this.currentTemplate === 1 },
+                { component: 'Template3', selected: this.currentTemplate === 2 },
+            ],
+        };
+    },
+    methods: {
+        changeCurrentTemplate(index) {
+            this.currentTemplate = index;
+        },
+    },
+    mounted() {
+        const coverLetterStyleStore = this.$coverLetterStyleStore; 
+        this.currentTemplate = coverLetterStyleStore.getCurrentTemplateId;
+    },
+};
 </script>
 
 <style></style>

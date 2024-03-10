@@ -3,9 +3,8 @@
         <div class="text-center capitalize pb-1">
             <span class="text-sm font-semibold text-gray-700">{{ templateName }}</span>
         </div>
-        <div :class="{ 'border-blue-500': selected }"
-            class="border w-full border-gray-200 hover:border-blue-500 cursor-pointer border-2 rounded-lg w-fit rounded"
-            style="height: 295px;" @click="selection">
+        <div class="border w-full border-gray-200 hover:border-blue-500 cursor-pointer border-2 rounded-lg w-fit rounded"
+            style="height: 295px;"  :class="{ 'border-blue-500': selected }">
             <div class="p-0">
                 <div style="height: 275px;">
                 </div>
@@ -45,7 +44,6 @@ export default {
     data() {
         return {
             templateName: "",
-            selected: false
         }
     },
     methods: {
@@ -61,6 +59,10 @@ export default {
         formattype: {
             type: Array,
             required: false
+        },
+        selected: {
+            type: Boolean,
+            default: false
         }
     }
 }

@@ -38,6 +38,9 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
         },
         setThecurrentColorIdOfTheCurrentTemplate(id) {
             this.coverLetterTemplates[this.currentTemplateId].currentColorId = id;
+        },
+        setTheCurrentTemplate(id) {
+            this.currentTemplateId = id;
         }
     },
 
@@ -57,6 +60,9 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
         },
         getCurrentColorIdOfTheCurrentTemplate: (state) => {
             return state.coverLetterTemplates[state.currentTemplateId]?.currentColorId || 0;
+        },
+        getCurrentTemplateId: (state) => {
+            return state.currentTemplateId;
         },
        
     },

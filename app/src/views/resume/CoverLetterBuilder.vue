@@ -227,8 +227,6 @@
 </template>
 
 <script>
-
-
 import HardSkillCardVue from '../../components/forms/res/HardSkillCard.vue';
 import axios from 'axios';
 import confetti from 'canvas-confetti';
