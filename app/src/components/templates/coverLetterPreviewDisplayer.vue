@@ -34,10 +34,12 @@ export default {
     methods: {
         changeCurrentTemplate(index) {
             this.currentTemplate = index;
+            const coverLetterStyleStore = this.$coverLetterStyleStore;
+           
         },
     },
     mounted() {
-        const coverLetterStyleStore = this.$coverLetterStyleStore; 
+        const coverLetterStyleStore = this.$coverLetterStyleStore;
         this.currentTemplate = coverLetterStyleStore.getCurrentTemplateId;
     },
 };
