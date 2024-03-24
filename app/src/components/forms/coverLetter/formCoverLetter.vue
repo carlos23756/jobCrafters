@@ -124,6 +124,7 @@
                     <div class="text-xl text-gray-800 font-semibold">Letter Details</div>
                     <span class="text-xs text-gray-500">3–4 paragraphs explaining why you're the perfect candidate for a
                         specific job .</span>
+                        <Editor v-model="editorContent" editorStyle="height: 320px" />
                 </div>
             </div>
         </div>
@@ -136,6 +137,8 @@ import LsJobInputVue from '../res/form/LsJobInput.vue';
 import { useCoverLetterStore } from '../../../stores/coverLetterStore';
 import { computed, ref } from 'vue';
 
+import Editor from 'primevue/editor';
+
 import { Switch } from '@headlessui/vue'
 
 
@@ -143,13 +146,14 @@ export default {
     data() {
         return {
             // Initialize with the initial content
-            editorContent: "lorem ipsum",
+           // editorContent: "lorem ipsum",
             enabled: false,
             moreinformation: false
         };
     },
     components: {
-        LsJobInputVue
+        LsJobInputVue,
+        Editor 
     },
     methods: {
         showMoreinfo() {
@@ -239,7 +243,8 @@ export default {
             phoneNumber,
             address,
             website,
-            linkedin
+            linkedin,
+            editorContent
         };
     }
 
