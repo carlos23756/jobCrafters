@@ -2,7 +2,7 @@
     <div>
         <div>
             <RadioGroup class="mt-2">
-                <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
+                <RadioGroupLabel class="sr-only">Choose a color{{ selectedColor }} </RadioGroupLabel>
                 <span class="flex items-center space-x-2">
                     <div v-for="(color, index) in colors" :key="index">
                         <div class="cursor-pointer"
@@ -28,7 +28,9 @@
 
 <script>
 
+import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
 import { RadioGroup, RadioGroupLabel } from '@headlessui/vue';
+import { computed, ref } from 'vue';
 
 export default {
     data() {
@@ -37,20 +39,32 @@ export default {
             selectedColor: 0,
         }
     },
-    methods:{
-        updateSelectedColor(index) {
-            this.selectedColor = index;
-            const coverLetterStyleStore = this.$coverLetterStyleStore; 
-           //set the current color id
-            coverLetterStyleStore.setThecurrentColorIdOfTheCurrentTemplate(index);
-        }
+    setup() {
+        const CoverLetterStyleDoc = useCoverLetterStyleDoc();
+
+        const selectedColor = computed({
+            get: () => CoverLetterStyleDoc.currentColorId,
+            set: (value) => {
+                CoverLetterStyleDoc.currentColorId = value;
+            }
+        });
+
+        const colors = computed(() => CoverLetterStyleDoc.getCurrentColors);
+
+        const updateSelectedColor = (index) => {
+            selectedColor.value = index;
+        };
+
+        return {
+            selectedColor,
+            colors,
+            updateSelectedColor
+        };
     },
+
+
     components: { RadioGroup, RadioGroupLabel },
-    mounted() {
-        const store = this.$coverLetterStyleStore;
-        this.colors = store.getCurrentColors;
-        this.selectedColor = store.getCurrentColorId
-    },
+
 
 };
 </script>

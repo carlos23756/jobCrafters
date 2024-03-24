@@ -138,15 +138,11 @@ import { useCoverLetterStore } from '../../../stores/coverLetterStore';
 import { computed, ref } from 'vue';
 
 import Editor from 'primevue/editor';
-
 import { Switch } from '@headlessui/vue'
-
 
 export default {
     data() {
         return {
-            // Initialize with the initial content
-           // editorContent: "lorem ipsum",
             enabled: false,
             moreinformation: false
         };

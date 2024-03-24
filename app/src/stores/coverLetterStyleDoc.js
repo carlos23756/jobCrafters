@@ -4,6 +4,7 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
     state: () => ({
         coverLetterTemplates: [],
         currentTemplateId: 0,
+        currentColorId: 0,
     }),
 
     actions: {
