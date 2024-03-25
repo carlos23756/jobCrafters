@@ -123,7 +123,7 @@
                 <div class="pb-2">
                     <div class="text-xl text-gray-800 font-semibold">Letter Details</div>
                     <span class="text-xs text-gray-500">3–4 paragraphs explaining why you're the perfect candidate for a
-                        specific job .</span>
+                        specific job .</span> <br>
                         <Editor v-model="editorContent" editorStyle="height: 320px" />
                 </div>
             </div>
