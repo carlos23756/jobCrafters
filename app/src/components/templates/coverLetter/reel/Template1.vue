@@ -2,7 +2,7 @@
     <div class="cvl a4">
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="108" class="relative" style="left: 95%;" height="124"
-                viewBox="0 0 108 124" fill="none">
+                viewBox="0 0 108 124" :class="transformClass(textColor)">
                 <path d="M0 -39H108V70C108 99.8234 83.8234 124 54 124C24.1766 124 0 99.8234 0 70V-39Z" />
             </svg>
             <div>
@@ -22,7 +22,8 @@
                                         <h2 class="capitalize font-semibold text-3xl" :class="textColor">
                                             {{ formData.Fullname }}
                                         </h2>
-                                        <span class="text-gray-600 capitalize text-xl font-semibold">{{ formData.position }}</span>
+                                        <span class="text-gray-600 capitalize text-xl font-semibold">{{
+                                            formData.position }}</span>
                                     </div>
                                     <div class="pt-3">
                                         <span class="capitalize">
@@ -47,7 +48,7 @@
 
                     </tbody>
                 </table>
-               
+
             </div>
             <div v-html="formData.letterDetails" class="leading-6 pt-6" style="font-weight: lighter;">
             </div>
@@ -69,8 +70,22 @@ export default {
         }
     },
     props: ["formData", "textColor"],
+    methods: {
+        transformClass(originalClass) {
+            const classes = originalClass.split('-');
+            classes[0] = 'fill';
+           
+            return classes.join('-');
+        }
+    },
     computed: {
-
+        transformClass() {
+            return function (originalClass) {
+                const classes = originalClass.split('-');
+                classes[0] = 'fill';
+                return classes.join('-');
+            }
+        }
     },
     mounted() {
 
