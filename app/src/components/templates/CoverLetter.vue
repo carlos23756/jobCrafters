@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="Components[0]" :formData="formData" :textColor="textColors"></component>
+        <component :is="Components[1]" :formData="formData" :textColor="textColors"></component>
     </div>
 </template>
 

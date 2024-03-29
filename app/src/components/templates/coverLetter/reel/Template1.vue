@@ -79,13 +79,7 @@ export default {
         }
     },
     computed: {
-        transformClass() {
-            return function (originalClass) {
-                const classes = originalClass.split('-');
-                classes[0] = 'fill';
-                return classes.join('-');
-            }
-        }
+        
     },
     mounted() {
 
