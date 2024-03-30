@@ -22,9 +22,7 @@
                                             formData.position }}</span>
                                     </div>
                                     <div class="pt-3">
-                                        <span class="capitalize">
-                                            To u:
-                                        </span> <br>
+                                       
                                         <span class="text-gray-800">{{ formData.companyName }}</span> <br>
                                         <span class="text-gray-800">{{ formData.hiringManagerName }}</span> <br>
                                         <span class="text-sm capitalize" :class="textColor">November 29 , 2024</span>
