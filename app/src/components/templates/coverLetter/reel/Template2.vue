@@ -1,8 +1,8 @@
 <template>
     <div class="cvl a4">
         <div>
-            <div class="pt-28">
-                <div  :class="transformClass(textColor)" class="rounded-lg p-4">
+            <div class="pt-20">
+                <div  :class="transformClass(textColor)" class="rounded-lg border border-2 p-8">
                     <table>
                     <thead>
                         <tr>
@@ -48,7 +48,7 @@
                
 
             </div>
-            <div v-html="formData.letterDetails" class="leading-6 pt-6" style="font-weight: lighter;font-family: 'archiaregular', sans-serif !important;">
+            <div v-html="formData.letterDetails" class="leading-6 pt-4" style="font-weight: lighter;font-family: 'archiaregular', sans-serif !important;">
             </div>
         </div>
 
@@ -71,8 +71,8 @@ export default {
     methods: {
         transformClass(originalClass) {
             const classes = originalClass.split('-');
-            classes[0] = 'bg';
-            classes[2] = '100';
+            classes[0] = 'border';
+            classes[2] = '400';
            
             return classes.join('-');
         }

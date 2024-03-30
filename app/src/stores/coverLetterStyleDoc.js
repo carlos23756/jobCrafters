@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
     state: () => ({
         coverLetterTemplates: [],
-        currentTemplateId: 1,
+        currentTemplateId: 0,
         currentColorId: 0,
     }),
 
@@ -32,7 +32,7 @@ export const useCoverLetterStyleDoc = defineStore("coverLetterStyleDoc", {
         generateColors() {
             if (this.coverLetterTemplates.length === 0) {
                 //Template 1
-                this.generateTemplateColors([ "blue","yellow", "red"]);
+                this.generateTemplateColors([ "blue", "red","yellow"]);
                 //Template 2
                 this.generateTemplateColors(["blue", "yellow"]);
             }

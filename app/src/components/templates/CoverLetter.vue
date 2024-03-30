@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="Components[1]" :formData="formData" :textColor="textColors"></component>
+        <component :is="Components[currentTemplateId]" :formData="formData" :textColor="textColors"></component>
     </div>
 </template>
 
@@ -9,7 +9,8 @@ import { useCoverLetterStore } from '@/stores/coverLetterStore';
 import Template1Vue from './coverLetter/reel/Template1.vue';
 import Template2Vue from './coverLetter/reel/Template2.vue';
 import Template3Vue from './coverLetter/reel/Template3.vue';
-
+import { useCoverLetterStyleDoc } from '@/stores/coverLetterStyleDoc';
+import { computed, ref } from 'vue';
 export default {
     data() {
         return {
@@ -25,6 +26,19 @@ export default {
                 Template3Vue,
             ],
         }
+    },
+    setup(){
+        const coverLetterStore = useCoverLetterStyleDoc();
+        const currentTemplateId = computed({
+            get: () => coverLetterStore.currentTemplateId,
+            set: (value) => {
+                coverLetterStore.currentTemplateId = value;
+            }
+        });
+        
+        return {
+            currentTemplateId 
+        };
     },
     mounted() {
         const storeInfo = useCoverLetterStore();
