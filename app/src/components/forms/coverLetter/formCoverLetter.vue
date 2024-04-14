@@ -46,7 +46,7 @@
 
                         <div class="flex flex-row">
                             <div>
-                               Show more information
+                                Show more information
                             </div>
                             <div v-show="!moreinformation" class="pl-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -54,7 +54,7 @@
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                 </svg>
                             </div>
-                            <div v-show="moreinformation"  class="pl-2">
+                            <div v-show="moreinformation" class="pl-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     strokeWidth={1.5} stroke="currentColor" class="w-5 h-5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -124,7 +124,8 @@
                     <div class="text-xl text-gray-800 font-semibold">Letter Details</div>
                     <span class="text-xs text-gray-500">3–4 paragraphs explaining why you're the perfect candidate for a
                         specific job .</span> <br>
-                        <Editor v-model="editorContent" editorStyle="height: 320px" />
+
+                    <EditorLetterVue />
                 </div>
             </div>
         </div>
@@ -139,6 +140,7 @@ import { computed, ref } from 'vue';
 
 import Editor from 'primevue/editor';
 import { Switch } from '@headlessui/vue'
+import EditorLetterVue from './EditorLetter.vue';
 
 export default {
     data() {
@@ -149,7 +151,9 @@ export default {
     },
     components: {
         LsJobInputVue,
-        Editor 
+
+        EditorLetterVue
+
     },
     methods: {
         showMoreinfo() {

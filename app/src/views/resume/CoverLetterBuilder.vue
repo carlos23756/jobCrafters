@@ -403,7 +403,7 @@ export default {
 
 <style scoped>
 ::-webkit-scrollbar {
-    width: 3px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -411,11 +411,11 @@ export default {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #e9e9e9;
+    background: #e1e1e1;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #67e8f9;
+    background: #3b82f6;
 }
 
 .a4 {
